@@ -30,19 +30,19 @@ while True:
     instr = "\nEnter either 'a' (add),"
     instr += " 'f' (find),"
     instr += " 'l' (list all),"
-    instr += " 'r' (remove,"
+    instr += " 'r' (remove),"
     instr += " 'h' (help),"
     instr += " or 'q' (quit): "
     task = input(instr)
+    # Perform specific task based on the user input.
     if task == 'a':
-        kind = input("Do you want to add category or term? (c/t or anything"
+        # Determine whether user wants to add term or category.
+        kind = input("Do you want to add term or category? (t/c or anything"
                      " else to abort) ")
-        if kind == 'c':
-            glossary.add_category()
-        elif kind == 't':
+        if kind == 't':
             glossary.add_term()
-        else:
-            pass
+        elif kind == 'c':
+            glossary.add_category()
     elif task == 'f':
         glossary.find_term()
     elif task == 'l':

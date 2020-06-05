@@ -1,1 +1,1 @@
-{"miscallenous": {"PEP": "Python Enhancement Proposal"}}
+{"miscallenous": {"PEP": "Python Enhancement Proposal", "tuple": "immutable list", "dictionary": "data structure that allows for mapping key-value pairs"}, "data types": {"string": "any set of characters enclosed with ''"}}
