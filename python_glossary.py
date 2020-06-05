@@ -1,55 +1,31 @@
 # My Python glossary
 # Previously in python_work/chapter6
 
-import glossary_functions as gf
 import glossary as g
-# Data
 
-miscallenous, data_types, methods = '', '', ''
-glossary = g.Glossary(miscallenous, data_types, methods)
-# Miscallenous
+import json
 
-miscallenous = {
-    "tuple": "immutable list",
-    "dictionary": "data structure that allows for mapping key-value pairs",
-    "PEP": "Python Enhancement Proposal",
-    "conditional test": "test that returns either 'True' or 'False'",
-    "list comprehension": "concise way of creatint a list",
-    "set": "data structure in which each item must be unique",
-    "float": "any number with a decimal point",
-    "f-string": "formatted string, variable name replaced with value",
-    "constant": "variable whose value stays the same during life of prog",
-    "range()": "returns value within given range - [x,y)",
-}
+# Read glossary.
+filename = 'glossary.json'
+try:
+    with open(filename) as f:
+        data = json.load(f)
+except FileNotFoundError:
+    with open(filename, 'w') as f:
+        json.dump({}, f)
+    with open(filename) as f:
+        data = json.load(f)
+        
 
-# Data types
-
-data_types = {
-    "string": "any set of characters enclosed with''",
-    "numbers": "numerical data in a form of integers or floats",
-}
-
-# Methods
-
-methods = {
-    "title()": "converts string value into a title case",
-    "lower()": "converts string value into a lower case",
-    "upper()": "converts string value into an upper case",
-    "range()": "returns numbers from a given range",
-    "append()": "appends an item to a list",
-    "remove()": "removes an item from a list by value",
-    "items()": "returns key-value pairs from a dictionary",
-    "keys()": "returns keys from a dictionary",
-    "values()": "returns values from a dictionary",
-}
+# Instantialize glossary.
+glossary = g.Glossary(data)
 
 
-
+print("\n----- Python Glossary -----")
 print("\nWelcome to the Python Glossary created by Arkadiusz Podkowa.")
-print("Refer to this document whenever you need help with a particular python element.\n")
+print("Refer to this document, whenever you need help with a particular python element.\n")
 
-active = True
-while active:
+while True:
     # Input possibilities:
     instr = "\nEnter either 'a' (add),"
     instr += " 'f' (find),"
@@ -59,14 +35,28 @@ while active:
     instr += " or 'q' (quit): "
     task = input(instr)
     if task == 'a':
-        gf.add_term()
+        kind = input("Do you want to add category or term? (c/t or anything"
+                     " else to abort) ")
+        if kind == 'c':
+            glossary.add_category()
+        elif kind == 't':
+            glossary.add_term()
+        else:
+            pass
     elif task == 'f':
-        gf.find_term()
+        glossary.find_term()
     elif task == 'l':
-        gf.list_all()
+        glossary.list_all()
     elif task == 'r':
-        gf.remove_term()
+        glossary.remove_term()
     elif task == 'h':
-        gf.get_help()
+        glossary.get_help()
     elif task == 'q':
-        gf.quit()
+        break
+    else:
+        glossary.get_help()
+
+
+# Write glossary.
+with open(filename, 'w') as f:
+    json.dump(glossary.glossary, f)
