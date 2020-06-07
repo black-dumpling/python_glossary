@@ -59,4 +59,4 @@ while True:
 
 # Write glossary.
 with open(filename, 'w') as f:
-    json.dump(glossary.glossary, f)
+    json.dump(glossary.glossary, f, indent=4, sort_keys=True)
