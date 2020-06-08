@@ -6,7 +6,7 @@ import glossary as g
 import json
 
 # Read glossary.
-filename = 'glossary.json'
+filename = '/Users/Arek/projects/python_glossary/glossary.json'
 try:
     with open(filename) as f:
         data = json.load(f)
