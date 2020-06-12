@@ -1,2 +1,3 @@
-# Ignore these files and directories:
-__pycache__
+# Ignore these files.
+__pychache__
+glossary.json
