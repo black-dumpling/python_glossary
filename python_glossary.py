@@ -30,6 +30,7 @@ while True:
     instr = "\nEnter either 'a' (add),"
     instr += " 'f' (find),"
     instr += " 'l' (list all),"
+    instr += " 'm' (move),"
     instr += " 'r' (remove),"
     instr += " 'h' (help),"
     instr += " or 'q' (quit): "
@@ -47,6 +48,8 @@ while True:
         glossary.find_term()
     elif task == 'l':
         glossary.list_all()
+    elif task == 'm':
+        glossary.move()
     elif task == 'r':
         glossary.remove_term()
     elif task == 'h':
